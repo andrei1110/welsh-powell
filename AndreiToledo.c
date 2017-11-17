@@ -83,7 +83,7 @@ void welshPowell(){
 		o = order[i];
 		int vColor[maxC] = {{0,0,0,0}};
 		for(int j = 0; j < maxV; j++){ //percorrer as adjacencias
-			if(graph[o][j] == 1 && color[j] != 0){ //verifica a cor do vizinho
+			if(graph[o][j] == 1 && color[j] != 0){ //verificar a cor do vizinho
 				vColor[color[j]] = 1;
 			}
 		}
