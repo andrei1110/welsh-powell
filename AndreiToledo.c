@@ -15,10 +15,10 @@ int graph[maxV][maxV] = {{0,1,0,0,0,0,0,1,0,0,0}, //a
 						  {0,0,0,1,1,0,1,1,0,1,0}  //k
 						  };
 						  
-int degree[maxV]; //degree
-int color[maxV];
-int visited[maxV];
-int order[maxV];
+int degree[maxV]; //grau
+int color[maxV]; //cor dos vértices
+int visited[maxV]; //vértices visitados
+int order[maxV]; //ordem
 
 void sort(){ //ordenação
 	int aux;
