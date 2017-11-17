@@ -3,7 +3,7 @@
 #define maxV 11
 #define maxC 5
 						 //a b c d e f g h i j k 
-int graph[maxV][maxV] = {{0,1,0,0,0,0,0,1,0,0,0}, //a
+int graph[maxV][maxV] = { {0,1,0,0,0,0,0,1,0,0,0}, //a
 						  {1,0,0,1,0,0,0,0,0,0,0}, //b
 						  {0,0,0,1,0,0,0,0,0,0,0}, //c
 						  {0,1,1,0,0,0,0,0,1,0,1}, //d
@@ -48,6 +48,7 @@ void init(){
 
 void countDegree(){
 	int i,j;
+	init();
 	for(i = 0; i < maxV; i++){
 		degree[i] = 0;
 	}
@@ -64,14 +65,19 @@ void countDegree(){
 }
 
 void printWP(){
+	printf("Vértices em ordem de 0 a %d \n\n",maxV-1);
 	for(int i = 0; i < maxV; i++){
 		printf("Vértice %d tem grau %d e a cor dele é %d\n", i, degree[i], color[i]);
+	}
+	printf("\n-----------------------------------------\n");
+	printf("Vértices ordenados por grau\n\n");
+	for(int i = 0; i < maxV; i++){
+		printf("Vértice %d tem grau %d e a cor dele é %d\n", order[i], degree[order[i]], color[order[i]]);
 	}
 }
 
 void welshPowell(){
 	int k,o;
-	init();
 	countDegree();
 	for(int i = 0; i < maxV; i++){ //percorrer a ordem dos vetores
 		o = order[i];
