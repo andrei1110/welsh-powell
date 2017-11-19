@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #define maxV 11
 #define maxC 5
@@ -21,9 +22,9 @@ int color[maxV]; //cor dos vértices
 int order[maxV]; //ordem
 
 void sort(){ //ordenação
-	int aux;
-	for( int i=0; i < maxV; i++ ){
-		for( int j = maxV - 1; j > i; j-- ){
+	int i,j,aux;
+	for(i=0; i < maxV; i++ ){
+		for(j = maxV - 1; j > i; j-- ){
 			if( degree[order[j]] > degree[order[j-1]] ){ 
 			aux = order[j];
 			order[j] = order[j-1];
@@ -65,24 +66,26 @@ void countDegree(){
 }
 
 void printWP(){
+	int i;
 	printf("Vértices em ordem de 0 a %d \n\n",maxV-1);
-	for(int i = 0; i < maxV; i++){
+	for(i = 0; i < maxV; i++){
 		printf("Vértice %d tem grau %d e a cor dele é %d\n", i, degree[i], color[i]);
 	}
 	printf("\n-----------------------------------------\n");
 	printf("Vértices ordenados por grau\n\n");
-	for(int i = 0; i < maxV; i++){
+	for(i = 0; i < maxV; i++){
 		printf("Vértice %d tem grau %d e a cor dele é %d\n", order[i], degree[order[i]], color[order[i]]);
 	}
 }
 
 void welshPowell(){
-	int k,o;
+	int i,j,k,o;
+	int vColor[maxC];
 	countDegree();
-	for(int i = 0; i < maxV; i++){ //percorrer a ordem dos vetores
+	for(i = 0; i < maxV; i++){ //percorrer a ordem dos vetores
 		o = order[i];
-		int vColor[maxC] = {{0,0,0,0}};
-		for(int j = 0; j < maxV; j++){ //percorrer as adjacencias
+		memset (vColor,0,sizeof(vColor));
+		for(j = 0; j < maxV; j++){ //percorrer as adjacencias
 			if(graph[o][j] == 1 && color[j] != 0){ //verificar a cor do vizinho
 				vColor[color[j]] = 1;
 			}
